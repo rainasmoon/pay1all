@@ -1,6 +1,4 @@
-************
-prepare env
-************
+# prepare env
 
 pip install mysqlclient  # i use this.
 python3 -m pip install --upgrade pip
@@ -12,9 +10,7 @@ python3 -m pip install wordcloud
 python3 -m pip install requests
 python3 -m pip install matplotlib
 
-**************
-init the data
-**************
+# init the data
 
 python manage.py loaddata test/fixtures/init_product
 python manage.py createsuperuser
@@ -22,17 +18,13 @@ python manage.py createsuperuser
 usermod -a -G hht uwsgi
 need to MAKE SURE you use THE REAL API
 
-*************
-start script
-*************
+# start script
 
 uwsgi --chdir=/home/hht/pay1all --http :8000 --module pay1all.wsgi:application  --master --pidfile=/tmp/pay1all-master.pid  --processes=5 --vacuum --daemonize=/home/hht/pay1all.log 
 
 uwsgi --chdir=/home/pi/git/online-application/pay1all --http :8000 --module pay1all.wsgi:application  --master --pidfile=/tmp/pay1all-master.pid  --vacuum --daemonize=/home/pi/pay1all.log 
  
-*****
-tips
-*****
+# tips
 
 https://search.jd.com/Search?keyword=%E6%89%8B%E6%9C%BA&enc=utf-8&wq=%E6%89%8B%E6%9C%BA&pvid=58d2347f9b31410588c47ce29351c7be
 
