@@ -1,0 +1,5 @@
+/config_api.json
+/geckodriver
+/geckodriver.log
+result*.png
+jd_comment.txt*

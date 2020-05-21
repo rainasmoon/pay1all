@@ -1,0 +1,42 @@
+pip install mysqlclient  # i use this.
+
+python3 -m pip install --upgrade pip
+
+python manage.py loaddata test/fixtures/init_product
+
+python manage.py createsuperuser
+
+need to MAKE SURE you use THE REAL API
+/**********************************************/
+
+scp -r ~/git/online-application/pay1all root@aws.pay1all.top:/home/hht/
+
+scp -r  -i "~/aws/redhat.pem"  /cygdrive/c/Users/Administrator/git/online-application/pay1all ec2-user@aws.rainasmoon.com:/home/ec2-user/
+
+
+
+curl https://search.jd.com/Search?keyword=%E6%89%8B%E6%9C%BA&enc=utf-8&wq=%E6%89%8B%E6%9C%BA&pvid=c060319d4120468ca810e38ab6b73545 -x http://121.199.36.121:3128 -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:70.0) Gecko/20100101 Firefox/70.0"
+
+curl  https://so.m.jd.com/ware/search.action?keyword=%E6%89%8B%E6%9C%BA&searchFrom=home&sf=11&as=1  -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:70.0) Gecko/20100101 Firefox/70.0"
+
+
+scp -r root@aws.pay1all.top:/home/hht/pay1all/db.sqlite3 /cygdrive/c/Users/Administrator/git/online-application/pay1all/
+scp -r /cygdrive/c/Users/Administrator/git/online-application/pay1all/db.sqlite3 root@aws.pay1all.top:/home/hht/pay1all/
+
+uwsgi --chdir=/home/hht/pay1all --http :8000 --module pay1all.wsgi:application  --master --pidfile=/tmp/pay1all-master.pid  --processes=5 --vacuum --daemonize=/home/hht/pay1all.log 
+
+uwsgi --chdir=/home/pi/git/online-application/pay1all --http :8000 --module pay1all.wsgi:application  --master --pidfile=/tmp/pay1all-master.pid  --vacuum --daemonize=/home/pi/pay1all.log 
+ 
+usermod -a -G examplegroup exampleusername
+usermod -a -G hht uwsgi
+
+https://search.jd.com/Search?keyword=%E6%89%8B%E6%9C%BA&enc=utf-8&suggest=1.his.0.0&wq=&pvid=349e98d163e4479d975eb946019cebd9
+https://search.jd.com/Search?keyword=%E6%89%8B%E6%9C%BA&enc=utf-8&wq=%E6%89%8B%E6%9C%BA&pvid=58d2347f9b31410588c47ce29351c7be
+
+yum install wqy-zenhei-fonts
+python3 -m pip install --upgrade pip
+python3 -m pip install pymysql
+python3 -m pip install jieba
+python3 -m pip install wordcloud
+python3 -m pip install requests
+python3 -m pip install matplotlib

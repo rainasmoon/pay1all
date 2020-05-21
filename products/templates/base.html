@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="商品进化算法实验室">
+<meta name="author" content="rainasmoon">
+<title>{% block title %}商品进化{% endblock %} - 全了的</title> {% load static %}
+<link rel="stylesheet" type="text/css"
+	href="{% static 'bootstrap-4.3.1/css/bootstrap.min.css' %}">
+<link rel="stylesheet" type="text/css"
+	href="{% static 'products/style.css' %}">
+</head>
+<body class="bg-light">
+
+	<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+		<a class="navbar-brand mr-auto mr-lg-0"
+			href="{% url 'products:index'  %}">全了的 - 进化</a>
+		<button class="navbar-toggler p-0 border-0" type="button"
+			data-toggle="offcanvas">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="navbar-collapse offcanvas-collapse"
+			id="navbarsExampleDefault">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link"
+					href="{% url 'products:results' %}">得分 <span class="sr-only">(current)</span>
+				</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="{% url 'products:compare' 0 0 %}">投票</a></li>
+
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" id="dropdown01"
+					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">其它</a>
+					<div class="dropdown-menu" aria-labelledby="dropdown01">
+						<a class="dropdown-item" href="https://shop116375480.taobao.com/">淘宝店</a>
+						<a class="dropdown-item" href="https://www.rainasmoon.com/">个人博客</a>
+						<a class="dropdown-item" href="https://www.weibo.com/rainasmoon">微博</a>
+						<a class="dropdown-item" href="{% url 'products:about' %}">关于</a>
+					</div></li>
+			</ul>
+			<form class="form-inline my-2 my-lg-0" action="{% url 'products:search' %}" method="post">
+				{% csrf_token %}
+				<input id="search_input_id" name="search_input" class="form-control mr-sm-2" type="text" placeholder="Search"
+					aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+			</form>
+		</div>
+	</nav>
+
+	{% block page_content %}{% endblock %}
+
+	<footer>
+		<p>备案号：冀ICP备15002959号-1  <a href="http://he.beian.miit.gov.cn/state/outPortal/loginPortal.action">河北备案网
+    站</a></p>
+	</footer>
+
+	<script src="{% static 'jquery-3.3.1.slim.min.js' %}"></script>
+	<script src="{% static 'bootstrap-4.3.1/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'bootstrap-4.3.1/js/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'products/js/offcanvas.js' %}"></script>
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?e4b227c7086b2548a8f0320a5e02d65a";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+
+</body>
+</html>

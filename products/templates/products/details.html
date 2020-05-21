@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}
+商品进化 - 词云 - 全了的
+{% endblock %}
+ {% block page_content %}
+{% load static %}
+<div class="nav-scroller bg-white shadow-sm">
+	<nav class="nav nav-underline">
+		<a class="nav-link active" href="{% url 'products:index' %}">主页</a> 
+		<a class="nav-link" href="#"></a> <a class="nav-link" href="{% url 'products:compare' 0 0 %}">投票</a>
+	</nav>
+</div>
+<main role="main" class="container">
+<h1 class="mt-4">我的-最爱</h1>
+<p>
+根据 <strong>您的选择</strong>这款详情。
+</p>
+<h2>{{product.product_name}}</h2>
+<img src="{{product.product_big_pic}}" />
+<p>价格 : {{product.product_price}}</p>
+<p>{{product.cidName}} - {{product.cid2Name}} - {{product.cid3Name}}</p>
+<a class="btn btn-lg btn-primary" href="{{product.product_promotion_url}}">去京东查看</a>
+<hr class="mb-4">
+<h2>大家说：</h2>
+<img class="img-fluid" alt="Look at me, smile and say 'cheese'" src="{% static 'cloudpic' %}/{{product.wordcloud_pic_path}}" />
+<hr class="mb-4">
+<a class="btn btn-lg btn-primary" href="{% url 'products:compare' product.id 0 %}" role="button">vote again?</a>
+</main>
+{% endblock %}

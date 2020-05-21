@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}
+商品得分
+{% endblock %}
+ {% block page_content %}
+<div class="nav-scroller bg-white shadow-sm">
+	<nav class="nav nav-underline">
+		<a class="nav-link active" href="{% url 'products:index' %}">主页</a> <a
+			class="nav-link" href="{% url 'products:compare' 0 0 %}">投票</a>
+	</nav>
+</div>
+<main role="main" class="container">
+	<h1 class="mt-4">商品得分</h1>
+	<p class="lead">
+		根据 <strong>性能，热度，大数据评算</strong>的得分。
+	</p>
+
+	{% if product_list %}
+	<table class="table table-striped">
+		<thead class="thead-light">
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">商品</th>
+				<th scope="col">分数</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for product in product_list %}
+			<tr>
+				<th scope="row">{{ forloop.counter }}</th>
+				<td><a href="{% url 'products:details' product.id  %}">{{ product.product_name }}</a></td>
+				<td>{{ product.p_scores }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% else %}
+
+
+	<p>No products.</p>
+	{% endif %} <a class="btn btn-lg btn-primary"
+		href="{% url 'products:compare' 0 0 %}" role="button">vote again?</a>
+</main>
+{% endblock %}

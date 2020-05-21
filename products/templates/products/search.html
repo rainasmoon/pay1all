@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}
+你想搜索哪件商品？
+{% endblock %}
+ {% block page_content %}
+
+<main role="main" class="container">
+<h1>计算结果：</h1>
+<p class="bd-lead">
+当你搜索想要的物品时，我会自动进行如下的事情：
+</p>
+<ol>
+	<li>记录您的输入结果。</li>
+	<li>自动获得网络上当前网络上商品的信息。</li>
+	<li>通过多种渠道获得商品的评价词云。</li>
+	<li>把当前商品加入商品库和其它商品PK，排名。</li>
+	<li>生成结果。</li>
+</ol>
+<h2>当前正在进行：</h2>
+{% if message %}
+	<div class="alert alert-success" role="alert">
+		{{ message }}
+	</div>
+{% endif %}
+
+
+{% if asearch %}
+<p class="lead">
+请返回首页菜单查看。或点击：
+</p>
+<a href="{% url 'products:index_c' asearch.cid %}" class="btn btn-lg btn-primary">查看 - {{ asearch.search_context }}</a>
+{% endif %}
+
+</main>
+
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends "base.html" %} 
+{% block title %}
+物品PK
+{% endblock %}
+{% block page_content %} {% load static %}
+<div class="nav-scroller bg-white shadow-sm">
+	<nav class="nav nav-underline">
+		<a class="nav-link active" href="{% url 'products:index' %}">主页</a> <a
+			class="nav-link" href="{% url 'products:compare_c' 0 0 cid %}">投票</a>
+	</nav>
+</div>
+
+<main role="main" class="container">
+
+	<h1>左边 还是 右边？</h1>
+
+	<form action="{% url 'products:vote' aproduct.id bproduct.id %}"
+		method="post" class="needs-validation was-validated">
+		{% csrf_token %}
+
+		<div class="row mb-2">
+			<div class="col-md-6">
+				<div
+					class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+					<div class="col p-4 d-flex flex-column position-static">
+						<strong class="d-inline-block mb-2 text-primary">选我</strong>
+						<h3 class="mb-0">{{aproduct.cid3Name}}</h3>
+						<div class="mb-1 text-muted">{{aproduct.product_price}}</div>
+						<p class="card-text mb-auto">{{aproduct.product_name}}</p>
+						<a href="{% url 'products:details' aproduct.id  %}"
+							class="stretched-link">Continue reading</a>
+					</div>
+
+					<div class="col-auto d-none d-lg-block">
+						<img class="bd-placeholder-img" width="200"
+							src="{{aproduct.product_big_pic}}"
+							preserveAspectRatio="xMidYMid slice" focusable="false" role="img"
+							aria-label="Placeholder: Thumbnail"> </img>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div
+					class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+					<div class="col p-4 d-flex flex-column position-static">
+						<strong class="d-inline-block mb-2 text-success">选我</strong>
+						<h3 class="mb-0">{{bproduct.cid3Name}}</h3>
+						<div class="mb-1 text-muted">{{bproduct.product_price}}</div>
+						<p class="mb-auto">{{bproduct.product_name}}</p>
+						<a href="{% url 'products:details' bproduct.id  %}"
+							class="stretched-link">Continue reading</a>
+					</div>
+					<div class="col-auto d-none d-lg-block">
+						<img class="bd-placeholder-img" width="200"
+							src="{{bproduct.product_big_pic}}"
+							preserveAspectRatio="xMidYMid slice" focusable="false" role="img"
+							aria-label="Placeholder: Thumbnail"> </img>
+					</div>
+				</div>
+			</div>
+		</div>
+		<h2>为你喜欢的物品投上一票吧</h2>
+		<hr class="mb-4">
+		{% if error_message %}</div>
+		<div class="alert alert-warning" role="alert">
+			<strong>{{ error_message }}</strong>
+		</div>
+		{% endif %}
+		<div class="d-block my-3">
+			<div class="custom-control custom-radio">
+				<input class="custom-control-input" type="radio" name="choice"
+					id="choice1" value="{{aproduct.id}}"> <label
+					class="custom-control-label" for="choice1">{{aproduct.product_name}}</label>
+			</div>
+			<div class="custom-control custom-radio">
+				<input class="custom-control-input" type="radio" name="choice"
+					id="choice2" value="{{bproduct.id}}"> <label
+					class="custom-control-label" for="choice2">{{bproduct.product_name}}</label>
+			</div>
+		</div>
+		<hr class="mb-4">
+		<input class="btn btn-primary btn-lg btn-block" type="submit"
+			value="Vote">
+	</form>
+</main>
+<script src="{% static 'products/js/form-validation.js' %}"></script>
+{% endblock %}

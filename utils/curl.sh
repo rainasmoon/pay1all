@@ -1,0 +1,15 @@
+curl -X POST 'http://gw.api.taobao.com/router/rest' \
+-H 'Content-Type:application/x-www-form-urlencoded;charset=utf-8' \
+-d 'app_key=28105142' \
+-d 'format=json' \
+-d 'method=taobao.tbk.tpwd.create' \
+-d 'partner_id=apidoc' \
+-d 'sign=3956294EF699A956543C53D1F2BF53F3' \
+-d 'sign_method=hmac' \
+-d 'timestamp=2019-12-08+17%3A07%3A33' \
+-d 'v=2.0' \
+-d 'ext=%7B%7D' \
+-d 'logo=https%3A%2F%2Fuland.taobao.com%2F' \
+-d 'text=%E9%95%BF%E5%BA%A6%E5%A4%A7%E4%BA%8E5%E4%B8%AA%E5%AD%97%E7%AC%A6' \
+-d 'url=https%3A%2F%2Fuland.taobao.com%2F' \
+-d 'user_id=123'

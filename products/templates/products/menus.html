@@ -1,0 +1,29 @@
+{% extends "base.html" %} 
+{% block title %}
+所有分类
+{% endblock %}
+{% block page_content %}
+<div class="nav-scroller bg-white shadow-sm">
+	<nav class="nav nav-underline">
+		<a class="nav-link active" href="{% url 'products:index' %}">主页</a> <a
+			class="nav-link" href="{% url 'products:compare' 0 0 %}">投票</a>
+	</nav>
+</div>
+<main role="main" class="container">
+	<h1 class="mt-4">搜索关键词</h1>
+	<p>
+		根据 <strong>搜索</strong>统计的关健词。
+	</p>
+
+	{% if menu_list %}
+	<div class="list-group">
+		{% for amenu in menu_list %} <a
+			href="{% url 'products:index_c' amenu.cid %}"
+			class="list-group-item list-group-item-action">{{ amenu.menu_name}}</a> {% endfor %}
+	</div>
+	{% else %}
+	<p>No menus.</p>
+	{% endif %} <a class="btn btn-lg btn-primary"
+		href="{% url 'products:compare' 0 0 %}" role="button">vote again?</a>
+</main>
+{% endblock %}
